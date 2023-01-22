@@ -1,6 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 @app.route('/mypage/me')
 def me():
@@ -9,11 +9,11 @@ def me():
 @app.route('/mypage/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'GET':
-        return render_template("contact.html")
+        return render_template('contact.html')
     elif request.method == 'POST':
         print(request.form)
         return redirect("/")
 
-@app.route('/')
+@app.route('/mypage')
 def index():
     return render_template('index.html')
