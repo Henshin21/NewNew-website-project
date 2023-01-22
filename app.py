@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__, template_folder='templates')
 
@@ -12,7 +12,7 @@ def contact():
         return render_template('contact.html')
     elif request.method == 'POST':
         print(request.form)
-        return redirect("/")
+        return redirect("/mypage")
 
 @app.route('/mypage')
 def index():
